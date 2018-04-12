@@ -68,11 +68,23 @@ header {
 .searchbox {
 	display: inline-block;
 	line-height: 68px;
+	position: relative;
+}
+.searchbox-underline{
+	content: '';
+	width: 0;
+	height: 2px;
+	background-color: #1369C0;
+	position: absolute;
+	left: 0;
+	top: 50px;
 }
 
 .searchbox input:first-child {
 	width: 250px;
 	height: 30px;
+	border: none;
+	border-bottom: 1px solid #aaa;
 }
 
 .searchbox input:nth-child(2) {

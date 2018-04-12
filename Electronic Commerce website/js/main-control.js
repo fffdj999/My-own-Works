@@ -134,4 +134,18 @@ $(document).ready(function() {
 
 	}
 	carousel_1();
+	
+	//搜索框下划线变长
+	$(".searchbox-text").click(function(){
+		$(".searchbox-underline").animate({
+			width:'248px',
+			left:'2px'
+		},300)
+	})
+	$(".searchbox-text").blur(function(){
+		$(".searchbox-underline").animate({
+			width:'0',
+			left:'0'
+		},300)
+	})
 })
