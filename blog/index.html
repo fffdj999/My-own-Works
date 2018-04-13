@@ -3,13 +3,29 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>首页 - 东风小站</title>
 		<style type="text/css">
 			* {
 				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
 			}
+			/*背景图片*/
+			
+			.backgroundimg {
+				position: fixed;
+				width: 100%;
+				min-width: 1200px;
+				height: 800px;
+				z-index: -1;
+				opacity: 0.4;
+			}
+			
+			.backgroundimg img {
+				width: 100%;
+				height: 100%;
+			}
+			/*页眉*/
 			
 			header {
 				width: 100%;
@@ -17,6 +33,7 @@
 				background-color: cornflowerblue;
 				line-height: 65px;
 				position: fixed;
+				z-index: 4;
 			}
 			
 			.aside-arrow,
@@ -71,6 +88,7 @@
 				transition: all 0.3s ease-in-out 0s;
 			}
 			/*搜索、消息、聊天、头像框*/
+			
 			.search-logo {
 				position: absolute;
 				display: inline-block;
@@ -112,6 +130,7 @@
 				width: 100%;
 				height: 100%;
 			}
+			
 			.avatar-logo {
 				position: absolute;
 				display: inline-block;
@@ -131,21 +150,22 @@
 				top: 0;
 				left: 0;
 			}
-			
 			/*登录*/
-			.login{
+			
+			.login {
 				position: absolute;
 				display: inline-block;
 				right: 20px;
 			}
-			.login a{
+			
+			.login a {
 				color: white;
 				font-size: 18px;
 				text-decoration: none;
 			}
-			
 			/*侧边栏*/
-			aside{
+			
+			aside {
 				position: fixed;
 				bottom: 0;
 				width: 150px;
@@ -153,8 +173,11 @@
 				background-color: #eee;
 				box-shadow: 1px 0px 5px #aaa;
 				left: -150px;
+				z-index: 999;
 			}
-			aside .board,aside .latest{
+			
+			aside .board,
+			aside .latest {
 				display: inline-block;
 				position: relative;
 				width: 150px;
@@ -164,7 +187,9 @@
 				text-decoration: none;
 				z-index: 1;
 			}
-			.board img,.latest img{
+			
+			.board img,
+			.latest img {
 				width: 20px;
 				height: 20px;
 				position: absolute;
@@ -172,8 +197,163 @@
 				top: 15px;
 				z-index: 2;
 			}
-			.board a,.latest a{
+			
+			.board a,
+			.latest a {
 				width: 150px;
+			}
+			/*导航栏*/
+			
+			nav {
+				position: relative;
+				width: 100%;
+				top: 65px;
+				text-align: center;
+			}
+			
+			.nav {
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				line-height: 40px;
+				background-color: rgba(255, 255, 255, 0.7);
+			}
+			
+			.nav a {
+				text-decoration: none;
+				margin: 0 10px;
+				color: cornflowerblue;
+			}
+			/*主要板块*/
+			
+			.maincontent-container {
+				position: relative;
+				width: 100%;
+				top: 70px;
+				text-align: center;
+			}
+			
+			.maincontent-parent {
+				display: inline-block;
+			}
+			/*宽度位置，不能使用margin:0 auto居中*/
+			/*display:flex已确定，不能通过设置display:inline-block，直接父元素text-align:center居中*/
+			/*目前想到的方法，只能通过增加一个间接元素，设置其为行内块状元素，带动下面的maincontent一起居中*/
+			
+			.maincontent {
+				width: 100%;
+				max-width: 1000px;
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-between;
+			}
+			
+			.maincontent figure {
+				display: inline-block;
+				width: 225px;
+				height: 225px;
+				margin: 10px 0;
+				background-color: greenyellow;
+				position: relative;
+			}
+			/*图片大小*/
+			
+			.maincontent figure img {
+				width: 225px;
+				height: 225px;
+			}
+			/*图片下面的黑条*/
+			
+			.content-link {
+				position: absolute;
+				display: inline-block;
+				width: 225px;
+				height: 30px;
+				line-height: 30px;
+				background-color: rgba(0, 0, 0, 0.5);
+				left: 0;
+				bottom: 0;
+				overflow: hidden;
+			}
+			
+			.content-link a {
+				color: white;
+				text-decoration: none;
+			}
+			
+			figcaption p:nth-child(1) {
+				position: absolute;
+				left: 15px;
+				top: 15px;
+				color: white;
+			}
+			
+			figcaption p:nth-child(2) {
+				position: absolute;
+				left: 15px;
+				top: 35px;
+				color: white;
+			}
+			/*站点统计*/
+			
+			.web-statistics-container {
+				position: relative;
+				top: 80px;
+				width: 100%;
+				height: 80px;
+				text-align: center;
+			}
+			
+			.web-statistics {
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				min-width: 370px;
+				height: 80px;
+				background-color: rgba(80, 160, 200, 0.2);
+				text-align: center;
+			}
+			
+			.web-statistics div {
+				display: inline-block;
+				width: 24.5%;
+				min-width: 85px;
+				height: 80px;
+				line-height: 40px;
+			}
+			
+			.web-statistics div p {
+				width: 100%;
+			}
+			
+			.web-statistics div p:nth-child(1) {
+				font-size: 25px;
+				color: #5da3e7;
+			}
+			
+			.web-statistics div p:nth-child(2) {
+				font-size: 12px;
+				color: #777;
+			}
+			/*友情链接*/
+			
+			footer {
+				width: 100%;
+				position: relative;
+				top: 80px;
+				text-align: center;
+			}
+			
+			.friendly-link {
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+			}
+			
+			.friendly-link img {
+				display: inline-block;
+				margin: 10px;
+				float: left;
 			}
 		</style>
 		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
@@ -237,17 +417,21 @@
 				})
 
 				//侧边栏每一行hover时变色
-				$(".board,.latest").hover(function(){
-					$(this).css("background-color","white");
-				},function(){
-					$(this).css("background-color","#eee");
+				$(".board,.latest").hover(function() {
+					$(this).css("background-color", "white");
+				}, function() {
+					$(this).css("background-color", "#eee");
 				})
 				//点击三条横线(其他位置)，侧边栏出现/消失
-				$(document).click(function(){
-					if (asideClickTime==0) {
-						$("aside").animate({"left":"-150px"});
-					}else{
-						$("aside").animate({"left":"0px"});
+				$(document).click(function() {
+					if(asideClickTime == 0) {
+						$("aside").animate({
+							"left": "-150px"
+						});
+					} else {
+						$("aside").animate({
+							"left": "0px"
+						});
 					}
 				})
 			})
@@ -255,6 +439,10 @@
 	</head>
 
 	<body>
+		<div class="backgroundimg">
+			<img src="img/未标题7.jpg" />
+		</div>
+
 		<header>
 			<div class="aside-arrow" tabindex="0">
 				<div class="aside-arrow1 aside-arrow-unchanged">
@@ -268,7 +456,7 @@
 			<div class="sitename">
 				<a href="index.html">东风小站</a>
 			</div>
-			
+
 			<!--登陆后-->
 			<!--<div class="search-logo">
 				<img src="img/search.png" />
@@ -282,34 +470,161 @@
 			<div class="avatar-logo">
 				<a href=""><img src="img/未标题3.jpg"/></a>
 			</div>-->
-			
-			
+
 			<div class="login">
 				<a href="">登录</a>
 			</div>
 		</header>
-		
+
+		<!--侧边栏-->
 		<section>
 			<aside>
 				<div class="board">
-					<img src="img/未标题5.png"/>
+					<img src="img/未标题5.png" />
 					<a href="" class="board">板块</a>
 				</div>
-				
 				<div class="latest">
-					<img src="img/未标题4.png"/>
+					<img src="img/未标题4.png" />
 					<a href="" class="latest">最新</a>
 				</div>
-				
 			</aside>
 		</section>
 
-		<nav></nav>
-		<section>
+		<!--导航-->
+		<nav>
+			<div class="nav">
+				<a href="">新闻</a>
+				<a href="">体育</a>
+				<a href="">财经</a>
+				<a href="">娱乐</a>
+				<a href="">科技</a>
+				<a href="">图片</a><br />
+				<a href="">新闻</a>
+				<a href="">体育</a>
+				<a href="">财经</a>
+				<a href="">娱乐</a>
+				<a href="">科技</a>
+				<a href="">图片</a>
+			</div>
+		</nav>
 
+		<!--主要板块-->
+		<section class="maincontent-container">
+			<div class="maincontent-parent">
+				<div class="maincontent">
+					<figure>
+						<a href=""><img src="img/images/pic1.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="css居中总结">css居中总结</a>
+						</div>
+						<figcaption>
+							<p>博客</p>
+							<p>ffery07的博客</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic2.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="慕课网资料">慕课网资料</a>
+						</div>
+						<figcaption>
+							<p>学院</p>
+							<p>专业学习资料</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic3.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="jquery-3.3.1（最新）">jquery-3.3.1（最新）</a>
+						</div>
+						<figcaption>
+							<p>下载</p>
+							<p>各种资源下载</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic4.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="click和blur冲突问题">click和blur冲突问题</a>
+						</div>
+						<figcaption>
+							<p>论坛</p>
+							<p>相互交流讨论</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic5.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="用CSS 实现元素垂直居中,有哪些好的方案">用CSS 实现元素垂直居中,有哪些好的方案</a>
+						</div>
+						<figcaption>
+							<p>问答</p>
+							<p>有问必答</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic6.jpg" /></a>
+						<div class="content-link">
+							<a href="" title=""></a>
+						</div>
+						<figcaption>
+							<p>商城</p>
+							<p>增值服务</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic7.jpg" /></a>
+						<div class="content-link">
+							<a href="" title="小站限时开放注册中">小站限时开放注册中</a>
+						</div>
+						<figcaption>
+							<p>活动</p>
+							<p>定期开展各种活动</p>
+						</figcaption>
+					</figure>
+					<figure>
+						<a href=""><img src="img/images/pic8.jpg" /></a>
+						<div class="content-link">
+							<a href="" title=""></a>
+						</div>
+						<figcaption>
+							<p>更多</p>
+							<p></p>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
 		</section>
-		<section></section>
-		<footer></footer>
+
+		<!--站点统计-->
+		<section class="web-statistics-container">
+			<div class="web-statistics">
+				<div class="online-user">
+					<p>10</p>
+					<p>在线</p>
+				</div>
+				<div class="member">
+					<p>100</p>
+					<p>会员</p>
+				</div>
+				<div class="topic">
+					<p>100</p>
+					<p>主题</p>
+				</div>
+				<div class="post">
+					<p>200</p>
+					<p>帖子</p>
+				</div>
+			</div>
+		</section>
+
+		<!--友情链接-->
+		<footer>
+			<div class="friendly-link">
+				<a href=""><img src="img/未标题6.png" /></a>
+			</div>
+		</footer>
+
 	</body>
 
 </html>
