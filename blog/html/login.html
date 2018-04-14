@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>博客 - 东风小站</title>
+		<title>登录 - 东风小站</title>
 		<style type="text/css">
 			* {
 				box-sizing: border-box;
@@ -225,136 +225,72 @@
 				margin: 0 10px;
 				color: cornflowerblue;
 			}
-			/*帖子信息*/
-			/*帖子排序*/
-			section.posts-container{
+			/*登录账号、密码*/
+			
+			.loginPage-container {
 				width: 100%;
-				position: relative;
-				top: 80px;
 				text-align: center;
-				margin-bottom: 20px;
-			}
-			.categoryIndex{
-				display: inline-block;
-				width: 100%;
-				max-width: 1000px;
-				height: 50px;
-				background-color: rgba(255, 255, 255, 0.7);
-				position: relative;
-				line-height: 50px;
-				margin-bottom: 10px;
-				box-shadow:  0 1px 1px #aaa;
-			}
-			.categoryIndex a{
-				display: inline-block;
-				text-decoration: none;
-				color: cornflowerblue;
-				float: left;
-				margin-left: 10px;
-				/*position: absolute;
-				left: 20px;*/
-			}
-			.categoryIndex p{
-				display: inline-block;
-				float: left;
-				margin-left: 10px;
-				color: rgba(0,0,0,0.3);
+				margin-top: 200px;
 			}
 			
-			/*帖子列表*/
-			.postsInfo{
+			.loginPage {
 				display: inline-block;
 				width: 100%;
 				max-width: 1000px;
-				background-color: rgba(255, 255, 255, 0.7);
-				position: relative;
 			}
-			.postsSorting{
+			
+			.loginPage>div {
 				display: inline-block;
-				width: 100%;
-				height: 50px;
 				position: relative;
-				height: 50px;
-				border-bottom: 1px solid rgba(0,0,0,0.2);
 			}
-			.postsSorting img{
+			.loginPage img{
 				position: absolute;
 				width: 20px;
 				height: 20px;
-				right: 40px;
-				top: 15px;
-				cursor: pointer;
+				left: -40px;
+				top: 12px;
 			}
-			/*列表详情*/
-			.postsList{
-				display: inline-block;
-				width: 100%;
-				max-width: 1000px;
-				background-color: rgba(255, 255, 255, 0.7);
-				position: relative;
-				/*height: 500px;*/
-			}
-			.postExample{
-				width: 100%;
-				height: 55px;
-				position: relative;
-				margin-bottom: 15px;
-			}
-			.postExample a{
-				position: absolute;
-				text-decoration: none;
-				color: black;
-				width: 80px;
-				height: 14px;
-				line-height: 14px;
-				text-align: left;
-				overflow: hidden;
-				font-size: 12px;
-				top: 40px;
-			}
-			.postExample a:nth-child(1){
-				left: 20px;
-				top: 5px;
-				width: 500px;
+			
+			.loginPage div input {
+				width: 350px;
 				height: 30px;
-				line-height: 30px;
-				font-size: 25px;
+				margin: 5px 0;
+				border: none;
+				outline: none;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+				background-color: transparent;
+				font-size: 20px;
 			}
-			.postExample a:nth-child(2){
-				left: 20px;
-				color: #4995df;
-				font-weight: bold;
-			}
-			.postExample a:nth-child(3){
-				left: 120px;
-				text-decoration: underline;
-			}
-			.postExample p{
+			/*下划线动态变化，以表示当前focus对象*/
+			.loginPage>div>div {
+				width: 0;
+				height: 3px;
+				background-color: cornflowerblue;
 				position: absolute;
-				left: 240px;
-				top: 40px;
-				height: 14px;
-				line-height: 14px;
-				width: 180px;
-				overflow: hidden;
-				font-size: 12px;
+				left: 0;
+				bottom: 5px;
+				transition: width 0.3s;
 			}
-			/*帖子翻页*/
-			.pageTurning{
-				display: inline-block;
-				width: 100%;
-				max-width: 1000px;
+			/*提交表单*/
+			.login-submit{
+				margin-top: 20px;
+				width: 350px;
 				height: 50px;
 				line-height: 50px;
-			}
-			.pageTurning div{
-				width: 50px;
-				margin: 0 10px;
-				background-color: rgba(255,255,255,0.5);
-				display: inline-block;
+				outline: none;
+				border: none;
+				background-color: cornflowerblue;
+				border-radius: 2px;
+				-webkit-box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
 				cursor: pointer;
+				font-size: 18px;
+				color: white;
 			}
+			
+			
+			
 			/*站点统计*/
+			
 			.web-statistics-container {
 				position: relative;
 				top: 80px;
@@ -419,6 +355,13 @@
 		<script type="text/javascript">
 			var asideClickTime = 0;
 			$(document).ready(function() {
+				//登录界面输入框focus、blur时，下划线长度动态变化
+				$(".loginPage div input").focus(function(){
+					$(this).next().css("width","350px");
+				})
+				$(".loginPage div input").blur(function(){
+					$(this).next().css("width","0");
+				})
 				//点击三条线变形及恢复
 				$(".aside-arrow").click(function() {
 					if(asideClickTime == 0) {
@@ -567,69 +510,27 @@
 			</div>
 		</nav>
 
-		<!--帖子信息-->
-		<section class="posts-container">
-			<!--帖子排序-->
-			<div class="categoryIndex">
-				<a href="../index.html">首页</a>
-				<p>/</p>
-				<a href="#">博客</a>
-			</div>
-			<!--帖子列表-->
-			<div class="postsInfo">
-				<div class="postsSorting">
-					<img src="../img/1.html/未标题1.png"/>
+		<!--登录账号、密码-->
+		<div class="loginPage-container">
+			<form action="../index.html" method="post" class="loginPage">
+				<div class="loginText">
+					<img src="../img/login/未标题.png" />
+					<input type="text" name="" id="" value="" />
+					<div></div>
 				</div>
-				<!--列表详情-->
-				<div class="postsList">
-					<div class="postExample">
-						<a href="topic/section1/postexample.html">使用开源项目的正确姿势！</a>
-						<a href="">移动开发</a>
-						<a href="">ffery07</a>
-						<p>2018年04月14日&nbsp;0:27</p>
-					</div>
-					<div class="postExample">
-						<a href="">为什么说枚举更占内存，枚举原理是什么？</a>
-						<a href="">问答专区</a>
-						<a href="">fuchenxuan</a>
-						<p>2018年04月10日&nbsp;12:00</p>
-					</div>
-					<div class="postExample">
-						<a href="">Web 前端怎样入门？</a>
-						<a href="">求职问道</a>
-						<a href="">hj</a>
-						<p>2018年04月14日&nbsp;9:03</p>
-					</div>
-					<div class="postExample">
-						<a href="">歌曲和歌词，哪个更在意？</a>
-						<a href="">灌水</a>
-						<a href="">hj</a>
-						<p>2018年04月14日&nbsp;9:06</p>
-					</div>
-					<div class="postExample">
-						<a href="">关于这个网页问题求解</a>
-						<a href="">问答专区</a>
-						<a href="">hj</a>
-						<p>2018年04月14日&nbsp;9:07/p>
-					</div>
-					<div class="postExample">
-						<a href="">关于定位</a>
-						<a href="">经验总结</a>
-						<a href="">hj</a>
-						<p>2018年04月14日&nbsp;9:08</p>
-					</div>
+				<br />
+
+				<div class="loginPassword">
+					<img src="../img/login/未标题2.png" />
+					<input type="password" name="" id="" value="" />
+					<div></div>
 				</div>
-			</div>
-			<div class="pageTurning">
-				<div class="pageUp" style="font-size: 20px;">
-					&lt;
-				</div>
-				<div class="pageDown" style="font-size: 20px;">
-					&gt;
-				</div>
-			</div>
-		</section>
-		
+				<br />
+
+				<input type="submit" value="登录" class="login-submit"/>
+			</form>
+		</div>
+
 		<!--站点统计-->
 		<section class="web-statistics-container">
 			<div class="web-statistics">
