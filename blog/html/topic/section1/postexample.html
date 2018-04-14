@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>首页 - 东风小站</title>
+		<title>博客 - 东风小站</title>
 		<style type="text/css">
 			* {
 				box-sizing: border-box;
@@ -225,81 +225,130 @@
 				margin: 0 10px;
 				color: cornflowerblue;
 			}
-			/*主要板块*/
+			/*帖子信息*/
+			/*帖子排序*/
 			
-			.maincontent-container {
-				position: relative;
+			section.posts-container {
 				width: 100%;
-				top: 70px;
+				position: relative;
+				top: 80px;
 				text-align: center;
+				margin-bottom: 20px;
 			}
 			
-			.maincontent-parent {
+			.categoryIndex {
 				display: inline-block;
-			}
-			/*宽度位置，不能使用margin:0 auto居中*/
-			/*display:flex已确定，不能通过设置display:inline-block，直接父元素text-align:center居中*/
-			/*目前想到的方法，只能通过增加一个间接元素，设置其为行内块状元素，带动下面的maincontent一起居中*/
-			
-			.maincontent {
 				width: 100%;
 				max-width: 1000px;
-				display: flex;
-				flex-flow: row wrap;
-				justify-content: space-between;
+				height: 50px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
+				line-height: 50px;
+				margin-bottom: 10px;
+				box-shadow: 0 1px 1px #aaa;
 			}
 			
-			.maincontent figure {
+			.categoryIndex a {
 				display: inline-block;
-				width: 225px;
-				height: 225px;
-				margin: 10px 0;
-				background-color: greenyellow;
-				position: relative;
-				display: none;
+				text-decoration: none;
+				color: cornflowerblue;
+				float: left;
+				margin-left: 10px;
+				/*position: absolute;
+				left: 20px;*/
 			}
-			.maincontent figure a{
+			
+			.categoryIndex p {
+				display: inline-block;
+				float: left;
+				margin-left: 10px;
+				color: rgba(0, 0, 0, 0.5);
+			}
+			.categoryIndex span {
+				display: inline-block;
+				float: left;
+				margin-left: 10px;
+				color: rgba(0, 0, 0, 0.4);
+			}
+			
+			/*帖子内容列表*/
+			
+			.postInfo {
 				display: inline-block;
 				width: 100%;
-				height: 100%;
+				max-width: 1000px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
 			}
-			/*图片大小*/
 			
-			.maincontent figure img {
-				width: 225px;
-				height: 225px;
-			}
-			/*图片下面的黑条*/
-			
-			.content-link {
-				position: absolute;
+			.postTitle {
 				display: inline-block;
-				width: 225px;
-				height: 30px;
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				position: relative;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+				margin-bottom: 20px;
+			}
+			
+			.postTitle p {
+				float: left;
+				margin-left: 10px;
+			}
+			/*内容列表详情*/
+			
+			.postContentList {
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
+			}
+			
+			.postContentEach {
+				width: 100%;
+				position: relative;
+				display: inline-block;
+				margin-bottom: 50px;
+			}
+			
+			.postContentEach p {
+				float: left;
+				margin: 10px 15px;
+				text-align: left;
 				line-height: 30px;
-				background-color: rgba(0, 0, 0, 0.5);
-				left: 0;
-				bottom: 0;
-				overflow: hidden;
+			}
+			.postContentEach div{
+				display: inline-block;
+				width: 100%;
+			}
+			.postContentEach div p:nth-child(1) {
+				color: #337ab7;
+				font-weight: bold;
+				margin: 0 15px;
 			}
 			
-			.content-link a {
-				color: white;
-				text-decoration: none;
+			.postContentEach div p:nth-child(2) {
+				color: #3f92d9;
+				font-size: 12px;
+				margin: 0 15px;
+			}
+			/*帖子翻页*/
+			
+			.pageTurning {
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				height: 50px;
+				line-height: 50px;
 			}
 			
-			figcaption p:nth-child(1) {
-				position: absolute;
-				left: 15px;
-				top: 15px;
-				color: white;
-			}
-			
-			figcaption p:nth-child(2) {
-				position: absolute;
-				left: 15px;
-				top: 35px;
-				color: white;
+			.pageTurning div {
+				width: 50px;
+				margin: 0 10px;
+				background-color: rgba(255, 255, 255, 0.5);
+				display: inline-block;
+				cursor: pointer;
 			}
 			/*站点统计*/
 			
@@ -363,12 +412,10 @@
 				float: left;
 			}
 		</style>
-		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			var asideClickTime = 0;
 			$(document).ready(function() {
-				//网页加载时8个分区逐渐浮现
-				$(".maincontent figure").fadeIn(1500);
 				//点击三条线变形及恢复
 				$(".aside-arrow").click(function() {
 					if(asideClickTime == 0) {
@@ -449,7 +496,7 @@
 
 	<body>
 		<div class="backgroundimg">
-			<img src="img/未标题7.jpg" />
+			<img src="../../../img/未标题7.jpg" />
 		</div>
 
 		<header>
@@ -463,21 +510,21 @@
 			</div>
 			<div class="aside-circle"></div>
 			<div class="sitename">
-				<a href="index.html">东风小站</a>
+				<a href="../../../index.html">东风小站</a>
 			</div>
 
 			<!--登陆后-->
 			<!--<div class="search-logo">
-				<img src="img/search.png" />
+				<img src="../../../img/search.png" />
 			</div>
 			<div class="notice-logo">
-				<img src="img/未标题.png" />
+				<img src="../../../img/未标题.png" />
 			</div>
 			<div class="chat-logo">
-				<img src="img/未标题2.png" />
+				<img src="../../../img/未标题2.png" />
 			</div>
 			<div class="avatar-logo">
-				<a href=""><img src="img/未标题3.jpg"/></a>
+				<a href=""><img src="../../../img/未标题3.jpg"/></a>
 			</div>-->
 
 			<div class="login">
@@ -489,11 +536,11 @@
 		<section>
 			<aside>
 				<div class="board">
-					<img src="img/未标题5.png" />
+					<img src="../../../img/未标题5.png" />
 					<a href="" class="board">板块</a>
 				</div>
 				<div class="latest">
-					<img src="img/未标题4.png" />
+					<img src="../../../img/未标题4.png" />
 					<a href="" class="latest">最新</a>
 				</div>
 			</aside>
@@ -517,90 +564,50 @@
 			</div>
 		</nav>
 
-		<!--主要板块-->
-		<section class="maincontent-container">
-			<div class="maincontent-parent">
-				<div class="maincontent">
-					<figure>
-						<a href="html/section1.html"><img src="img/images/pic1.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="css居中总结">css居中总结</a>
+		<!--帖子信息-->
+		<section class="posts-container">
+			<!--帖子排序-->
+			<div class="categoryIndex">
+				<a href="../../../index.html">首页</a>
+				<p>/</p>
+				<a href="../../section1.html">博客</a>
+				<p>/</p>
+				<span>使用开源项目的正确姿势！</span>
+			</div>
+			<!--帖子内容列表-->
+			<div class="postInfo">
+				<div class="postTitle">
+					<p>使用开源项目的正确姿势！</p>
+				</div>
+				<!--内容列表详情-->
+				<div class="postContentList">
+					<div class="postContentEach">
+						<div>
+							<p>ffery07</p>
+							<p>2018年04月14日 0:27</p>
 						</div>
-						<figcaption>
-							<p>博客</p>
-							<p>ffery07的博客</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic2.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="慕课网资料">慕课网资料</a>
+						<p>软件开发领域有一个流行的原则：DRY，Don’trepeatyourself，我们翻译过来更形象通俗：不要重复造轮子。开源项目主要目的是共享，其实就是为了让大家不要重复造轮子，尤其是在互联网这样一个快速发展的领域，速度就是生命，引入开源项目，可以节省大量的人力和时间，大大加快业务的发展速度，何乐而不为呢？</p>
+						<p>然而现实往往没有那么美好，开源项目虽然节省了大量的人力和时间，但带来的问题也不少，相信绝大部分同学都踩过开源软件的坑，小的影响可能是宕机半小时，大的问题可能是丢失几十万数据，甚至灾难性的事故是全部数据都丢失。</p>
+						<p>除此以外，虽然DRY原则摆在那里，但实际上开源项目反而是最不遵守DRY原则的，重复的轮子好多，尤其是歪果仁，一看哪个开源方案不爽，自己就吭哧吭哧搞一个差不多的：你有MySQL，我有PostgreSQL；你有MongoDB，我有Cassandra；你有memcached，我有redis；你有Gson，我有Jackson；你有Angular，我有React。。。。。。总之放眼望去，其实相似的轮子很多！</p>
+						<p>相似轮子太多，选择就是让人头疼的问题了。怎么办？完全不用开源项目几乎是不可能的，我们需要更加聪明的去选择和使用开源项目。形象点说：不要重复发明轮子，但要找到合适的轮子！你开的是保时捷，可别找个拖拉机的轮子。接下来我将根据加入UC5年与开源项目有关的经历，总结出一些“如何正确使用开源项目”的经验和教训。有的项目是我亲身经历，有的是我接触到的，有的是我观察的，其中部分描述细节可能并不完全准确，大家可以结合自己的经历一起探讨。</p>
+						<p>以下内容主要分3个部分进行描述，分别是“选”、“用”、“改”。选：如何选择一个开源项目【聚焦是否满足业务】我们在选择开源项目的时候，一个头疼的问题就是相似的开源方案较多，而且后面的总是要宣称比前面的更加牛逼。我们在选择的时候有点无所适从，总是会担心选择了A方案而错过了B方案，或者反过来。这里我们的经验是聚焦于是否满足业务，而不需要过于关注开源方案是否牛逼。</p>
+					</div>
+					<div class="postContentEach">
+						<div>
+							<p>ffery07</p>
+							<p>2018年04月14日 0:27</p>
 						</div>
-						<figcaption>
-							<p>学院</p>
-							<p>专业学习资料</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic3.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="jquery-3.3.1（最新）">jquery-3.3.1（最新）</a>
-						</div>
-						<figcaption>
-							<p>下载</p>
-							<p>各种资源下载</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic4.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="click和blur冲突问题">click和blur冲突问题</a>
-						</div>
-						<figcaption>
-							<p>论坛</p>
-							<p>相互交流讨论</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic5.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="用CSS 实现元素垂直居中,有哪些好的方案">用CSS 实现元素垂直居中,有哪些好的方案</a>
-						</div>
-						<figcaption>
-							<p>问答</p>
-							<p>有问必答</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic6.jpg" /></a>
-						<div class="content-link">
-							<a href="" title=""></a>
-						</div>
-						<figcaption>
-							<p>商城</p>
-							<p>增值服务</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic7.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="小站限时开放注册中">小站限时开放注册中</a>
-						</div>
-						<figcaption>
-							<p>活动</p>
-							<p>定期开展各种活动</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic8.jpg" /></a>
-						<div class="content-link">
-							<a href="" title=""></a>
-						</div>
-						<figcaption>
-							<p>更多</p>
-							<p></p>
-						</figcaption>
-					</figure>
+						<p>选：如何选择一个开源项目 【聚焦是否满足业务】</p>
+						<p>我们在选择开源项目的时候，一个头疼的问题就是相似的开源方案较多，而且后面的总是要宣称比前面的更加牛逼。我们在选择的时候有点无所适从，总是会担心选择了A方案而错过了B方案，或者反过来。这里我们的经验是聚焦于是否满足业务，而不需要过于关注开源方案是否牛逼。</p>
+					</div>
+				</div>
+			</div>
+			<div class="pageTurning">
+				<div class="pageUp" style="font-size: 20px;">
+					&lt;
+				</div>
+				<div class="pageDown" style="font-size: 20px;">
+					&gt;
 				</div>
 			</div>
 		</section>
@@ -630,7 +637,7 @@
 		<!--友情链接-->
 		<footer>
 			<div class="friendly-link">
-				<a href=""><img src="img/未标题6.png" /></a>
+				<a href=""><img src="../../../img/未标题6.png" /></a>
 			</div>
 		</footer>
 

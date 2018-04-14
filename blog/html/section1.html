@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>首页 - 东风小站</title>
+		<title>博客 - 东风小站</title>
 		<style type="text/css">
 			* {
 				box-sizing: border-box;
@@ -225,84 +225,136 @@
 				margin: 0 10px;
 				color: cornflowerblue;
 			}
-			/*主要板块*/
-			
-			.maincontent-container {
-				position: relative;
+			/*帖子信息*/
+			/*帖子排序*/
+			section.posts-container{
 				width: 100%;
-				top: 70px;
+				position: relative;
+				top: 80px;
 				text-align: center;
+				margin-bottom: 20px;
 			}
-			
-			.maincontent-parent {
+			.categoryIndex{
 				display: inline-block;
-			}
-			/*宽度位置，不能使用margin:0 auto居中*/
-			/*display:flex已确定，不能通过设置display:inline-block，直接父元素text-align:center居中*/
-			/*目前想到的方法，只能通过增加一个间接元素，设置其为行内块状元素，带动下面的maincontent一起居中*/
-			
-			.maincontent {
 				width: 100%;
 				max-width: 1000px;
-				display: flex;
-				flex-flow: row wrap;
-				justify-content: space-between;
+				height: 50px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
+				line-height: 50px;
+				margin-bottom: 10px;
+				box-shadow:  0 1px 1px #aaa;
+			}
+			.categoryIndex a{
+				display: inline-block;
+				text-decoration: none;
+				color: cornflowerblue;
+				float: left;
+				margin-left: 10px;
+				/*position: absolute;
+				left: 20px;*/
+			}
+			.categoryIndex p{
+				display: inline-block;
+				float: left;
+				margin-left: 10px;
+				color: rgba(0,0,0,0.3);
 			}
 			
-			.maincontent figure {
-				display: inline-block;
-				width: 225px;
-				height: 225px;
-				margin: 10px 0;
-				background-color: greenyellow;
-				position: relative;
-				display: none;
-			}
-			.maincontent figure a{
+			/*帖子列表*/
+			.postsInfo{
 				display: inline-block;
 				width: 100%;
-				height: 100%;
+				max-width: 1000px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
 			}
-			/*图片大小*/
-			
-			.maincontent figure img {
-				width: 225px;
-				height: 225px;
-			}
-			/*图片下面的黑条*/
-			
-			.content-link {
-				position: absolute;
+			.postsSorting{
 				display: inline-block;
-				width: 225px;
+				width: 100%;
+				height: 50px;
+				position: relative;
+				height: 50px;
+				border-bottom: 1px solid rgba(0,0,0,0.2);
+			}
+			.postsSorting img{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				right: 40px;
+				top: 15px;
+				cursor: pointer;
+			}
+			/*列表详情*/
+			.postsList{
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				background-color: rgba(255, 255, 255, 0.7);
+				position: relative;
+				/*height: 500px;*/
+			}
+			.postExample{
+				width: 100%;
+				height: 55px;
+				position: relative;
+				margin-bottom: 15px;
+			}
+			.postExample a{
+				position: absolute;
+				text-decoration: none;
+				color: black;
+				width: 80px;
+				height: 14px;
+				line-height: 14px;
+				text-align: left;
+				overflow: hidden;
+				font-size: 12px;
+				top: 40px;
+			}
+			.postExample a:nth-child(1){
+				left: 20px;
+				top: 5px;
+				width: 500px;
 				height: 30px;
 				line-height: 30px;
-				background-color: rgba(0, 0, 0, 0.5);
-				left: 0;
-				bottom: 0;
+				font-size: 25px;
+			}
+			.postExample a:nth-child(2){
+				left: 20px;
+				color: #4995df;
+				font-weight: bold;
+			}
+			.postExample a:nth-child(3){
+				left: 120px;
+				text-decoration: underline;
+			}
+			.postExample p{
+				position: absolute;
+				left: 240px;
+				top: 40px;
+				height: 14px;
+				line-height: 14px;
+				width: 180px;
 				overflow: hidden;
+				font-size: 12px;
 			}
-			
-			.content-link a {
-				color: white;
-				text-decoration: none;
+			/*帖子翻页*/
+			.pageTurning{
+				display: inline-block;
+				width: 100%;
+				max-width: 1000px;
+				height: 50px;
+				line-height: 50px;
 			}
-			
-			figcaption p:nth-child(1) {
-				position: absolute;
-				left: 15px;
-				top: 15px;
-				color: white;
-			}
-			
-			figcaption p:nth-child(2) {
-				position: absolute;
-				left: 15px;
-				top: 35px;
-				color: white;
+			.pageTurning div{
+				width: 50px;
+				margin: 0 10px;
+				background-color: rgba(255,255,255,0.5);
+				display: inline-block;
+				cursor: pointer;
 			}
 			/*站点统计*/
-			
 			.web-statistics-container {
 				position: relative;
 				top: 80px;
@@ -363,12 +415,10 @@
 				float: left;
 			}
 		</style>
-		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			var asideClickTime = 0;
 			$(document).ready(function() {
-				//网页加载时8个分区逐渐浮现
-				$(".maincontent figure").fadeIn(1500);
 				//点击三条线变形及恢复
 				$(".aside-arrow").click(function() {
 					if(asideClickTime == 0) {
@@ -449,7 +499,7 @@
 
 	<body>
 		<div class="backgroundimg">
-			<img src="img/未标题7.jpg" />
+			<img src="../img/未标题7.jpg" />
 		</div>
 
 		<header>
@@ -463,21 +513,21 @@
 			</div>
 			<div class="aside-circle"></div>
 			<div class="sitename">
-				<a href="index.html">东风小站</a>
+				<a href="../index.html">东风小站</a>
 			</div>
 
 			<!--登陆后-->
 			<!--<div class="search-logo">
-				<img src="img/search.png" />
+				<img src="../img/search.png" />
 			</div>
 			<div class="notice-logo">
-				<img src="img/未标题.png" />
+				<img src="../img/未标题.png" />
 			</div>
 			<div class="chat-logo">
-				<img src="img/未标题2.png" />
+				<img src="../img/未标题2.png" />
 			</div>
 			<div class="avatar-logo">
-				<a href=""><img src="img/未标题3.jpg"/></a>
+				<a href=""><img src="../img/未标题3.jpg"/></a>
 			</div>-->
 
 			<div class="login">
@@ -489,11 +539,11 @@
 		<section>
 			<aside>
 				<div class="board">
-					<img src="img/未标题5.png" />
+					<img src="../img/未标题5.png" />
 					<a href="" class="board">板块</a>
 				</div>
 				<div class="latest">
-					<img src="img/未标题4.png" />
+					<img src="../img/未标题4.png" />
 					<a href="" class="latest">最新</a>
 				</div>
 			</aside>
@@ -517,94 +567,69 @@
 			</div>
 		</nav>
 
-		<!--主要板块-->
-		<section class="maincontent-container">
-			<div class="maincontent-parent">
-				<div class="maincontent">
-					<figure>
-						<a href="html/section1.html"><img src="img/images/pic1.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="css居中总结">css居中总结</a>
-						</div>
-						<figcaption>
-							<p>博客</p>
-							<p>ffery07的博客</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic2.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="慕课网资料">慕课网资料</a>
-						</div>
-						<figcaption>
-							<p>学院</p>
-							<p>专业学习资料</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic3.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="jquery-3.3.1（最新）">jquery-3.3.1（最新）</a>
-						</div>
-						<figcaption>
-							<p>下载</p>
-							<p>各种资源下载</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic4.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="click和blur冲突问题">click和blur冲突问题</a>
-						</div>
-						<figcaption>
-							<p>论坛</p>
-							<p>相互交流讨论</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic5.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="用CSS 实现元素垂直居中,有哪些好的方案">用CSS 实现元素垂直居中,有哪些好的方案</a>
-						</div>
-						<figcaption>
-							<p>问答</p>
-							<p>有问必答</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic6.jpg" /></a>
-						<div class="content-link">
-							<a href="" title=""></a>
-						</div>
-						<figcaption>
-							<p>商城</p>
-							<p>增值服务</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic7.jpg" /></a>
-						<div class="content-link">
-							<a href="" title="小站限时开放注册中">小站限时开放注册中</a>
-						</div>
-						<figcaption>
-							<p>活动</p>
-							<p>定期开展各种活动</p>
-						</figcaption>
-					</figure>
-					<figure>
-						<a href=""><img src="img/images/pic8.jpg" /></a>
-						<div class="content-link">
-							<a href="" title=""></a>
-						</div>
-						<figcaption>
-							<p>更多</p>
-							<p></p>
-						</figcaption>
-					</figure>
+		<!--帖子信息-->
+		<section class="posts-container">
+			<!--帖子排序-->
+			<div class="categoryIndex">
+				<a href="../index.html">首页</a>
+				<p>/</p>
+				<a href="#">博客</a>
+			</div>
+			<!--帖子列表-->
+			<div class="postsInfo">
+				<div class="postsSorting">
+					<img src="../img/1.html/未标题1.png"/>
+				</div>
+				<!--列表详情-->
+				<div class="postsList">
+					<div class="postExample">
+						<a href="topic/section1/postexample.html">使用开源项目的正确姿势！</a>
+						<a href="">移动开发</a>
+						<a href="">ffery07</a>
+						<p>2018年04月14日&nbsp;0:27</p>
+					</div>
+					<div class="postExample">
+						<a href="">为什么说枚举更占内存，枚举原理是什么？</a>
+						<a href="">问答专区</a>
+						<a href="">fuchenxuan</a>
+						<p>2018年04月10日&nbsp;12:00</p>
+					</div>
+					<div class="postExample">
+						<a href="">Web 前端怎样入门？</a>
+						<a href="">求职问道</a>
+						<a href="">hj</a>
+						<p>2018年04月14日&nbsp;9:03</p>
+					</div>
+					<div class="postExample">
+						<a href="">歌曲和歌词，哪个更在意？</a>
+						<a href="">灌水</a>
+						<a href="">hj</a>
+						<p>2018年04月14日&nbsp;9:06</p>
+					</div>
+					<div class="postExample">
+						<a href="">关于这个网页问题求解</a>
+						<a href="">问答专区</a>
+						<a href="">hj</a>
+						<p>2018年04月14日&nbsp;9:07/p>
+					</div>
+					<div class="postExample">
+						<a href="">关于定位</a>
+						<a href="">经验总结</a>
+						<a href="">hj</a>
+						<p>2018年04月14日&nbsp;9:08</p>
+					</div>
+				</div>
+			</div>
+			<div class="pageTurning">
+				<div class="pageUp" style="font-size: 20px;">
+					&lt;
+				</div>
+				<div class="pageDown" style="font-size: 20px;">
+					&gt;
 				</div>
 			</div>
 		</section>
-
+		
 		<!--站点统计-->
 		<section class="web-statistics-container">
 			<div class="web-statistics">
@@ -630,7 +655,7 @@
 		<!--友情链接-->
 		<footer>
 			<div class="friendly-link">
-				<a href=""><img src="img/未标题6.png" /></a>
+				<a href=""><img src="../img/未标题6.png" /></a>
 			</div>
 		</footer>
 
