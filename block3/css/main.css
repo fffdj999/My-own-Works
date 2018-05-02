@@ -1,0 +1,258 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/*导航栏*/
+nav{
+	width: 100%;
+	min-width: 1000px;
+	height: 48px;
+	background-color: rgba(255,255,255,0.3);
+	position: fixed;
+	z-index: 2;
+}
+nav img{
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 60px;
+}
+nav ul{
+	display: inline-block;
+	height: 48px;
+	position: absolute;
+	left: 120px;
+	line-height: 48px;
+}
+nav ul li{
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	margin: 0 10px;
+}
+nav ul li a{
+	font-size: 14px;
+	color: white;
+	text-decoration: none;
+}
+/*搜索框部分*/
+header{
+	width: 100%;
+	min-width: 1000px;
+	height: 520px;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+header img{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+}
+header>p{
+	position: absolute;
+	left: 50%;
+	top: 35%;
+	transform: translate(-50%,-50%);
+	font-size: 45px;
+	color: white;
+	opacity: 0.5;
+	font-family: simsun;
+	-webkit-user-select: none;
+}
+.search-box{
+	width: 600px;
+	height: 40px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	border: 1px solid white;
+}
+.search-box:hover{
+	background-color: rgba(255,255,255,0.2);
+}
+.search-box input{
+	width: 560px;
+	height: 38px;
+	border: none;
+	background-color: rgba(0,0,0,0.2);
+	outline: none;
+	padding: 5px;
+	color: white;
+	font-size: 18px;
+}
+.search-box img{
+	width: 38px;
+	height: 38px;
+	position: absolute;
+	left: 560px;
+	background-color: rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+.search-box-extend{
+	width: 600px;
+	height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,20px);
+	background-color: rgba(0,0,0,0.2);
+	padding: 5px;
+	display: none;
+}
+header span{
+	height: 40px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,20px);
+	line-height: 40px;
+	text-align: center;
+	/*display: none;*/
+}
+header span p,header span a{
+	display: inline-block;
+	color: white;
+	font-size: 15px;
+}
+header span p{
+	
+}
+header span a{
+	margin: 0 10px;
+	text-decoration: none;
+}
+header span a:hover{
+	text-decoration: underline;
+}
+
+/*为您推荐*/
+.section1{
+	text-align: center;
+}
+.section1>p{
+	margin: 15px 0;
+	color: #999;
+}
+.recommend-container{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	width: 1130px;
+	margin: 0 auto;
+	background-color: #ededb1;
+	border: 15px solid ededb1;
+	border-radius: 15px;
+}
+.recommend-container figure{
+	width: 250px;
+	height: 250px;
+	position: relative;
+	box-sizing: content-box;
+	border: 11px solid white;
+	border-radius: 11px;
+	margin: 5px;
+	box-shadow: -2px -1px 2px rgba(0,0,0,0.2);
+	display: inline-block;
+}
+.recommend-container figure img{
+	width: 250px;
+	height: 250px;
+}
+.recommend-container figure figcaption{
+	width: 180px;
+	height: 40px;
+	line-height: 20px;
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+	background-color: rgba(255,255,255,0.2);
+	color: white;
+}
+.description{
+	position: absolute;
+	width: 20px;
+	height: 40px;
+	top: 0;
+	left: 0;
+	font-size: 15px;
+	-webkit-user-select: none;
+	writing-mode: tb-rl;
+	background-color: rgba(255,255,255,0.3);
+}
+.recommend-container figure figcaption h2{
+	margin-top: 2px;
+	font-size: 18px;
+	font-weight: lighter;
+}
+.recommend-container figure figcaption h2:hover{
+	color: forestgreen;
+}
+.recommend-container figure figcaption p{
+	font-size: 12px;
+}
+.section1 input{
+	width: 800px;
+	height: 40px;
+	margin: 20px 0;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+}
+/*分类*/
+.section2{
+	width: 1130px;
+	margin: 20px auto;
+}
+.section2 p{
+	font-size: 20px;
+	position: relative;
+}
+.section2 p::after{
+	content: '';
+	width: 1130px;
+	height: 1px;
+	background-color: black;
+	opacity: 0.2;
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+}
+.section2 ul{
+	margin: 15px 0;
+}
+.section2 ul li{
+	list-style: none;
+	display: inline-block;
+	width: 19%;
+	height: 25px;
+}
+.section2 ul li a{
+	text-decoration: none;
+	color: black;
+}
+/*footer*/
+.contact-info{
+	width: 100%;
+	height: 100px;
+	background-color: #333;
+}
+.contact-info a{
+	display: inline-block;
+	height: 40px;
+	margin: 15px 105px;
+	color: white;
+	text-decoration: none;
+}
+.company-info{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: black;
+	color: rgba(255,255,255,0.6);
+	text-align: center;
+}

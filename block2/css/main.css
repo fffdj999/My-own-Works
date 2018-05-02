@@ -186,11 +186,11 @@ aside figure {
 	top: 0;
 }
 
-aside figure a {
+.div-img a {
 	position: absolute;
 }
 
-aside figure img {
+.div-img a img {
 	width: 850px;
 	height: 400px;
 }
